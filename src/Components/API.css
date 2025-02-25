@@ -1,0 +1,29 @@
+.card{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.body{
+    align-items: center;
+}
+.tit{
+    font-size: 15px;
+    margin-top: 10px;
+}
+.tex{
+    font-size: 14px;
+}
+/* .button{
+    margin-right: 10px;
+} */
+
+/* navbar */
+.nav{
+    height: 80px;
+}
+.me-auto{
+    margin-left: 200px;
+}
+.dd{
+    margin-left: 100px;
+}
