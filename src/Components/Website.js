@@ -4,9 +4,9 @@ import { Button, Container, Nav, Navbar, NavDropdown, Card } from 'react-bootstr
 import { FaShoppingCart } from 'react-icons/fa';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import './API.css';
-import { auth, googleProvider } from './Firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
+import './API.css'; // Importing the CSS file
+import { auth } from './Firebase';
+import { signOut } from 'firebase/auth';
 
 function Website() {
     const [products, setProducts] = useState([]);
@@ -66,7 +66,6 @@ function Website() {
             await signOut(auth);
             localStorage.removeItem('isLoggedIn');
             alert('Logged out successfully');
-            // setUser(null);
             navigate('/Signup');
         } catch (error) {
             console.error('Logout Error:', error.message);
@@ -82,21 +81,21 @@ function Website() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#">Home</Nav.Link>
-                            <Nav.Link href="#">Contact</Nav.Link>
-                            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                            {/* <Nav.Link href="#">Home</Nav.Link>
+                            <Nav.Link href="#">Contact</Nav.Link> */}
+                            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#">Action</NavDropdown.Item>
                                 <NavDropdown.Item href="#">Another action</NavDropdown.Item>
-                            </NavDropdown>
+                            </NavDropdown> */}
                         </Nav>
                         {/* Cart Icon */}
-                        <Button variant="outline-dark" onClick={() => setShowCart(true)}>
+                        <Button variant="outline-dark" onClick={() => setShowCart(true)} className="btn-outline-dark">
                             <FaShoppingCart /> ({cart.length})
                         </Button>
                         <Link to='/Signup'>
-
-                        <Button variant="outline-primary" className="ms-3" >Sign Up / Login</Button></Link>
-                        <Button variant="outline-danger" className="ms-3" onClick={handleLogout}>Logout</Button>
+                            <Button variant="outline-primary" className="ms-3 btn-outline-primary">Sign Up / Login</Button>
+                        </Link>
+                        <Button variant="outline-danger" className="ms-3 btn-outline-danger" onClick={handleLogout}>Logout</Button>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -104,38 +103,39 @@ function Website() {
             {/* Toggle Between Product Page & Cart Page */}
             {showCart ? (
                 <div className="container mt-4">
-                    <h3>Shopping Cart</h3>
+                    <h3 className="cart-title">Shopping Cart</h3>
                     {cart.length === 0 ? <p>No items in cart</p> : (
-                        <p className="list-group">
+                        <div className="list-group">
                             {cart.map((item, index) => (
-                                <p key={index} className="list-group-item">
+                                <div key={index} className="list-group-item cart-item">
                                     <div className='div'>
-                                        <p> {item.title} - ${item.price}</p>
+                                        <p>{item.title} - ${item.price}</p>
                                         <div className='div-1'>
-                                            <Button variant="black" size="sm" onClick={() => addToCart(item)}>+</Button>{item.quantity}
+                                            <Button variant="black" size="sm" onClick={() => addToCart(item)}>+</Button>
+                                            {item.quantity}
                                             <Button variant="black" size="sm" onClick={() => decreaseQuantity(item.id)}>-</Button>
                                             <Button variant="black" size="sm" onClick={() => removeFromCart(index)}>Remove</Button>
                                         </div>
                                     </div>
-                                </p>
+                                </div>
                             ))}
-                        </p>
+                        </div>
                     )}
                     <h4 className="mt-3">Total Price: ${total.toFixed(2)}</h4>
-                    <Button variant="secondary" className="mt-3" onClick={() => setShowCart(false)}>Back to Products</Button>
+                    <Button variant="secondary" className="mt-3 btn-outline-secondary" onClick={() => setShowCart(false)}>Back to Products</Button>
                 </div>
             ) : (
-                <div className="card">
+                <div className="card-container">
                     {products.map((product) => (
-                        <Card key={product.id} style={{ width: '18rem' }}>
+                        <Card key={product.id} className="product-card">
                             <Card.Body className='body'>
-                                <Card.Img variant="top" src={product.image} style={{ height: "250px", width:"250px"}} />
+                                <Card.Img variant="top" src={product.image} className="card-img" />
                                 <Card.Title className='tit'>{product.title}</Card.Title>
                                 <Card.Text className='tex'>{product.description.substring(0, 100)}...</Card.Text>
                                 <Card.Text><strong>Price:</strong> $ {product.price}</Card.Text>
                                 <div className="d-flex justify-content-between">
-                                    <Button variant="primary" className='button'>{product.category}</Button>
-                                    <Button variant="success" onClick={() => addToCart(product)}>Add to Cart</Button>
+                                    <Button variant="primary" className='category-button'>{product.category}</Button>
+                                    <Button variant="success" onClick={() => addToCart(product)} className="add-to-cart-button">Add to Cart</Button>
                                 </div>
                             </Card.Body>
                         </Card>

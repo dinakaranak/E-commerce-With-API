@@ -1,29 +1,162 @@
-.card{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* .nav {
+    background-color: #343a40;
+    color: white;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    font-size: 1.1rem;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f8f9fa;
+}
+
+.navbar-toggler {
+    border-color: #ffffff;
+}
+
+/* Button Styling */
+/* button {
+    font-weight: bold;
+}
+
+button:focus {
+    outline: none;
+} */ */
+
+/* Product Cards Styling */
+.card {
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-img {
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.tit {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.tex {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.card-text {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.button {
+    font-weight: normal;
+}
+
+/* Cart Section */
+.container {
+    margin-top: 20px;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.div-1 {
+    display: flex;
+    align-items: center;
     gap: 10px;
 }
-.body{
-    align-items: center;
+
+.div-1 button {
+    background-color: #343a40;
+    color: white;
+    padding: 5px 10px;
 }
-.tit{
-    font-size: 15px;
+
+.div-1 button:hover {
+    background-color: #495057;
+}
+
+/* Cart Title and Total */
+h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* Cart and Product Page Toggle */
+button.btn-outline-secondary {
+    margin-top: 20px;
+}
+
+/* Sign Up/Login Buttons */
+button.btn-outline-primary {
     margin-top: 10px;
 }
-.tex{
-    font-size: 14px;
-}
-/* .button{
-    margin-right: 10px;
-} */
 
-/* navbar */
-.nav{
-    height: 80px;
+button.btn-outline-danger {
+    margin-top: 10px;
 }
-.me-auto{
-    margin-left: 200px;
+
+/* Cart Button */
+button.btn-outline-dark {
+    padding: 8px 12px;
 }
-.dd{
-    margin-left: 100px;
+
+/* Product Grid Styling */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr 1fr;
+    }
 }
