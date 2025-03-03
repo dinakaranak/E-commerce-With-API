@@ -6,7 +6,7 @@ body {
     padding: 0;
 }
 
-/* .nav {
+.nav {
     background-color: #343a40;
     color: white;
 }
@@ -36,7 +36,7 @@ body {
 
 button:focus {
     outline: none;
-} */ */
+} */
 
 /* Product Cards Styling */
 .card {
